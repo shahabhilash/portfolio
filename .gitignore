@@ -1,0 +1,5 @@
+# local preview config (not part of the site)
+.claude/
+
+# original unedited photo; the site uses the cut-out abhilash-about.webp
+assets/abhilash-about.png
