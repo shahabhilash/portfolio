@@ -141,7 +141,7 @@
     let W = 0, H = 0, dpr = 1;
     const size = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = innerWidth; H = innerHeight;
+      W = document.documentElement.clientWidth; H = document.documentElement.clientHeight;
       cv.width = W * dpr; cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
@@ -231,6 +231,30 @@
         card.style.setProperty("--rx", "0deg");
       });
     });
+  }
+
+  /* ---------- CartSense mock: cycle through "Why this?" explanations ---------- */
+  const why = $("#whyText");
+  if (why && !reduce) {
+    const reasons = [
+      [0, "Similar to a game you viewed (shared: sci-fi, metroidvania)"],
+      [1, "People who reviewed a racer you liked also reviewed this"],
+      [2, "Trending with players who share your taste in RPGs"],
+    ];
+    const rows = $$(".recs__list li");
+    let k = 0;
+    const show = () => {
+      const [row, text] = reasons[k % reasons.length];
+      why.classList.add("is-swap");
+      setTimeout(() => {
+        why.textContent = text;
+        rows.forEach((r, i) => r.classList.toggle("is-why", i === row));
+        why.classList.remove("is-swap");
+      }, 300);
+      k++;
+    };
+    show();
+    setInterval(show, 3200);
   }
 
   /* ---------- MeriYatra mock: ETA counts down in step with the moving auto ---------- */

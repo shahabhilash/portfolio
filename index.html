@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abhilash Shah — Software Engineer</title>
-  <meta name="description" content="Abhilash Shah — full-stack software engineer (SDE / FDE) with an AI/ML edge. B.Tech CSE @ VIT Bhopal. Builder of the VIT Bhopal Sports Facilities booking system (1,000+ users), MeriYatra live transit tracking, HPL Auction and more." />
+  <meta name="description" content="Abhilash Shah — full-stack software engineer (SDE / FDE) with an AI/ML edge. B.Tech CSE @ VIT Bhopal. Builder of the VIT Bhopal Sports Facilities booking system (1,000+ users), the CartSense ML recommendation engine, MeriYatra live transit tracking and more." />
   <meta name="theme-color" content="#0a3a2f" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230e7c61'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia' font-size='38' fill='%23f3f1e6'>a</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@500;700&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=16" />
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body class="is-loading">
 
@@ -182,8 +182,8 @@
         <article class="role reveal">
           <span class="role__num">03</span>
           <h3>AI / ML</h3>
-          <p>I built a real-time sign-language recogniser with MediaPipe landmarks and Keras LSTMs, and AI-powered developer analytics with Gemini. I'm Oracle Cloud AI Foundations certified.</p>
-          <ul><li>TensorFlow / Keras · LSTMs</li><li>NumPy · Pandas · OpenCV</li><li>LLM APIs &amp; prompt engineering</li></ul>
+          <p>I built CartSense, an explainable hybrid recommender (XGBoost LambdaMART over ALS, kNN and TF-IDF) trained on 814K real reviews, plus a real-time sign-language recogniser with MediaPipe and Keras LSTMs. I'm Oracle Cloud AI Foundations certified.</p>
+          <ul><li>Recommender systems · XGBoost · PyTorch</li><li>TensorFlow / Keras · LSTMs · OpenCV</li><li>MLflow · offline evaluation · LLM APIs</li></ul>
         </article>
       </div>
     </section>
@@ -233,8 +233,59 @@
         </div>
       </article>
 
-      <!-- #2: MeriYatra -->
+      <!-- #2: CartSense (AI / ML) -->
       <article class="flagship flagship--alt reveal">
+        <div class="flagship__info">
+          <div class="flagship__badges">
+            <span class="badge badge--hot">✦ AI / ML</span>
+            <span class="badge">814K real reviews</span>
+            <span class="badge">+39% NDCG@10</span>
+          </div>
+          <h3 class="flagship__title">CartSense <span>Explainable Recommendations</span></h3>
+          <p class="flagship__desc">
+            A full-stack video game store with a built-in <b>machine-learning recommendation engine</b>, trained on
+            <b>814,533 real Amazon reviews</b>. Every recommendation answers <b>"Why this?"</b>, and every one the store shows
+            is logged, so each model version can be compared by real click-through.
+          </p>
+          <ul class="flagship__feats">
+            <li><b>Two-stage hybrid recommender:</b> ALS, item-kNN, TF-IDF and popularity retrieve candidates, then an XGBoost LambdaMART ranker reorders them using 24 features</li>
+            <li><b>+39% NDCG@10</b> over the best single model on a held-out future time period, with leakage-free, time-based evaluation tracked in MLflow</li>
+            <li><b>Explainable:</b> each pick carries structured reasons, such as "similar to a game you viewed" or "people who reviewed X also reviewed this"</li>
+            <li><b>Cold start handled:</b> guests see what's trending, and a new user gets personal picks after viewing a single product</li>
+            <li><b>Production-style serving:</b> versioned FastAPI (<code>/api/v1</code>) with precomputed recommendations, click logging and CTR per model version on an analytics dashboard</li>
+          </ul>
+          <div class="stack"><span>Python</span><span>PyTorch</span><span>XGBoost</span><span>scikit-learn</span><span>MLflow</span><span>FastAPI</span><span>PostgreSQL</span><span>React + TypeScript</span><span>Docker</span><span>GitHub Actions</span></div>
+          <div class="flagship__cta">
+            <a class="btn btn--solid" href="https://github.com/shahabhilash/cartsense" target="_blank" rel="noopener">View code ↗</a>
+          </div>
+        </div>
+
+        <!-- animated mock of the "Recommended for you" panel -->
+        <div class="recs" aria-hidden="true">
+          <div class="recs__bar">
+            <span class="recs__brand">CartSense</span>
+            <span class="recs__model">model <b>hybrid-v4</b></span>
+          </div>
+          <p class="recs__title">Recommended for you</p>
+          <ul class="recs__list">
+            <li style="--score:.94"><span class="recs__art" style="--h:160"></span><div><b>Galaxy Hunter: Fusion</b><i><em></em></i></div><small>0.94</small></li>
+            <li style="--score:.81"><span class="recs__art" style="--h:200"></span><div><b>Starship Racer DX</b><i><em></em></i></div><small>0.81</small></li>
+            <li style="--score:.67"><span class="recs__art" style="--h:130"></span><div><b>Dungeon Quest II</b><i><em></em></i></div><small>0.67</small></li>
+          </ul>
+          <div class="recs__why">
+            <span class="recs__why-tag">Why this?</span>
+            <span class="recs__why-text" id="whyText">Similar to a game you viewed (shared: sci-fi, metroidvania)</span>
+          </div>
+          <div class="recs__metrics">
+            <span>NDCG@10 <b>0.0182</b></span>
+            <span>vs best single <b>+39%</b></span>
+            <span>CTR <b>logged</b></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- #3: MeriYatra -->
+      <article class="flagship reveal">
         <div class="flagship__info">
           <div class="flagship__badges">
             <span class="badge badge--live">● Live on Vercel</span>
@@ -347,9 +398,9 @@
       <div class="skills__grid">
         <div class="skill reveal"><h4>Languages</h4><p><span>TypeScript</span><span>JavaScript (ES6+)</span><span>Python</span><span>C++</span><span>SQL</span><span>HTML/CSS</span></p></div>
         <div class="skill reveal"><h4>Frontend</h4><p><span>React</span><span>Next.js (App Router)</span><span>Vite</span><span>Tailwind CSS</span></p></div>
-        <div class="skill reveal"><h4>Backend</h4><p><span>Node.js</span><span>Express</span><span>Hono</span><span>REST</span><span>WebSockets</span><span>Socket.IO</span><span>WebRTC</span><span>OAuth</span><span>RBAC</span></p></div>
+        <div class="skill reveal"><h4>Backend</h4><p><span>Node.js</span><span>Express</span><span>FastAPI</span><span>Hono</span><span>REST</span><span>WebSockets</span><span>Socket.IO</span><span>WebRTC</span><span>OAuth</span><span>RBAC</span></p></div>
         <div class="skill reveal"><h4>Data</h4><p><span>PostgreSQL (RLS)</span><span>Supabase</span><span>MongoDB</span><span>MySQL</span></p></div>
-        <div class="skill skill--ai reveal"><h4>AI / ML</h4><p><span>TensorFlow / Keras</span><span>LSTMs</span><span>MediaPipe</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>Gemini API</span><span>Prompt Engineering</span></p></div>
+        <div class="skill skill--ai reveal"><h4>AI / ML</h4><p><span>Recommender Systems</span><span>XGBoost</span><span>PyTorch</span><span>scikit-learn</span><span>MLflow</span><span>TensorFlow / Keras</span><span>LSTMs</span><span>MediaPipe</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>Gemini API</span><span>Prompt Engineering</span></p></div>
         <div class="skill reveal"><h4>Tooling</h4><p><span>Git / GitHub</span><span>Docker</span><span>Vercel CI/CD</span><span>Vitest</span><span>PGlite</span><span>Ethers.js</span></p></div>
       </div>
       <p class="skills__core reveal scribble">core: DSA · problem solving · API design · code review · agile</p>
@@ -435,6 +486,6 @@
     </section>
   </main>
 
-  <script src="main.js?v=11"></script>
+  <script src="main.js?v=13"></script>
 </body>
 </html>

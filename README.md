@@ -10,7 +10,7 @@ A hand-built static site in plain **HTML, CSS and JavaScript**, with no framewor
 |---|---|
 | `index.html` | All page content and sections |
 | `styles.css` | Bluish-green theme (CSS variables), layout (Grid/Flexbox), animations and the phone/tablet layouts |
-| `main.js` | Loader, scroll reveals, counters, phone menu, ink-pen cursor trail, magnetic buttons and the project mocks |
+| `main.js` | Loader, scroll reveals, counters, phone menu, ink-pen cursor trail, magnetic buttons and the project mocks (CartSense, MeriYatra) |
 | `assets/` | Photos (WebP with transparent backgrounds) and résumé PDF |
 
 Fonts come from Google Fonts: Bricolage Grotesque, Caveat, Kalam and JetBrains Mono.
@@ -23,8 +23,9 @@ Fonts come from Google Fonts: Bricolage Grotesque, Caveat, Kalam and JetBrains M
 - **What I bring:** SDE, FDE and AI/ML cards.
 - **Projects:**
   1. **VIT Bhopal Sports Facilities.** My main project: a booking and access system live at VIT Bhopal with 1,000+ real users, built with Next.js, Hono, Supabase (Postgres RLS) and Vitest.
-  2. **MeriYatra.** Real-time public-transit tracking with sub-100 ms WebSocket updates and OSRM ETAs, shown with an animated live-map mock.
-  3. **More things I've built:** HPL Auction, Meetly, Gesture Vision, DevScope, TaskFlow, plus svh-2026, Innovit-2026, WanderLust and VaccineRush.
+  2. **CartSense.** An explainable ML recommendation engine for a video game store, trained on 814K real Amazon reviews. A hybrid of ALS, item-kNN, TF-IDF and popularity is re-ranked by XGBoost LambdaMART (+39% NDCG@10 over the best single model), served through FastAPI with a React storefront. Shown with an animated "Recommended for you / Why this?" mock.
+  3. **MeriYatra.** Real-time public-transit tracking with sub-100 ms WebSocket updates and OSRM ETAs, shown with an animated live-map mock.
+  4. **More things I've built:** HPL Auction, Meetly, Gesture Vision, DevScope, TaskFlow, plus svh-2026, Innovit-2026, WanderLust and VaccineRush.
 - **Skills, experience and certificates:** a timeline plus animated certificate cards that fly in and get stamped "verified".
 - **Contact.**
 
