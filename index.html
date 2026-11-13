@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@500;700&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=25" />
+  <link rel="stylesheet" href="styles.css?v=28" />
 </head>
 <body class="is-loading">
 
@@ -82,8 +82,10 @@
           <span>Bhopal, MP 📍</span>
         </div>
         <div class="note note--r3" data-depth="20">
-          <svg class="doodle doodle--arrow-l" viewBox="0 0 120 60"><path d="M115 40 C 85 5, 50 5, 10 28"/><path d="M24 16 L10 28 L27 36"/></svg>
           <span>ships to prod —<br/><u>1000+ students</u><br/>book courts on my app</span>
+        </div>
+        <div class="note note--r6" data-depth="11">
+          <span>game developer too 🎮<br/><small>Unity · C#</small></span>
         </div>
         <div class="note note--r4" data-depth="14">
           <span>debugging comp.<br/>winner 🥇</span>
@@ -176,18 +178,18 @@
             <span class="badge">+39% NDCG@10</span>
           </div>
           <h3 class="flagship__title">CartSense <span>Explainable Recommendations</span></h3>
-          <p class="flagship__desc">
-            Explainable recommendation engine for a video game store, trained on <b>814K real Amazon reviews</b> and served through a production-style API.
-          </p>
+          <p class="flagship__problem"><span>Problem</span>Small online stores show the same bestsellers to everyone. Most visitors never sign in, black-box suggestions aren't trusted, and there's no easy way to prove recommendations help.</p>
+          <p class="flagship__desc"><span>Solution</span>An explainable recommendation engine with a working storefront on top, trained on <b>814K real Amazon reviews</b>.</p>
           <ul class="flagship__feats">
-            <li><b>Two-stage hybrid:</b> ALS, item-kNN and TF-IDF generate candidates, re-ranked by an XGBoost LambdaMART model over 24 features</li>
-            <li><b>+39% NDCG@10</b> over the best single model on a held-out future period, with leakage-free, time-based evaluation tracked in MLflow</li>
-            <li><b>Explainable and cold-start ready:</b> every pick answers "Why this?", and new users get personal recommendations after one product view</li>
-            <li><b>Serving:</b> versioned FastAPI (<code>/api/v1</code>) with precomputed results, click logging and CTR per model version</li>
+            <li><b>Two-stage hybrid:</b> ALS, item-kNN and TF-IDF candidates re-ranked by XGBoost LambdaMART (24 features), <b>+39% NDCG@10</b> over the best single model</li>
+            <li><b>Explainable and login-free:</b> every pick answers "Why this?", and guests get personal recommendations after one product view</li>
+            <li><b>Proves its impact:</b> a built-in A/B test against a popularity baseline, with CTR and add-to-bag rate checked by a two-proportion z-test</li>
+            <li><b>Production-style:</b> leakage-free evaluation in MLflow, retraining on live store events, and a versioned FastAPI with API keys for other stores</li>
           </ul>
-          <div class="stack"><span>Python</span><span>PyTorch</span><span>XGBoost</span><span>scikit-learn</span><span>MLflow</span><span>FastAPI</span><span>PostgreSQL</span><span>React + TypeScript</span><span>Docker</span><span>GitHub Actions</span></div>
+          <div class="stack"><span>Python</span><span>XGBoost</span><span>PyTorch</span><span>scikit-learn</span><span>MLflow</span><span>FastAPI</span><span>PostgreSQL</span><span>React + TypeScript</span><span>Docker</span><span>GitHub Actions</span></div>
           <div class="flagship__cta">
-            <a class="btn btn--solid" href="https://github.com/shahabhilash/cartsense" target="_blank" rel="noopener">View code ↗</a>
+            <a class="btn btn--solid" href="https://cartsense-rust.vercel.app" target="_blank" rel="noopener">Open live store ↗</a>
+            <a class="btn btn--outline" href="https://github.com/shahabhilash/cartsense" target="_blank" rel="noopener">View code ↗</a>
           </div>
         </div>
 
@@ -221,19 +223,18 @@
           <div class="flagship__badges">
             <span class="badge badge--hot">In production</span>
             <span class="badge badge--live">● Live at VIT Bhopal</span>
-            <span class="badge">1,000+ real users</span>
+            <span class="badge">1,000+ students</span>
           </div>
           <h3 class="flagship__title">VIT Bhopal <span>Sports Facilities</span></h3>
-          <p class="flagship__desc">
-            Production booking and access-control system for VIT Bhopal's pickleball, tennis and turf courts, used by <b>1,000+ students</b>.
-          </p>
+          <p class="flagship__problem"><span>Problem</span>1,000+ students share a few pickleball, tennis and turf courts, with no fair way to book slots, verify players at the gate or reclaim no-shows.</p>
+          <p class="flagship__desc"><span>Solution</span>A production booking and access-control platform. Students book with their college account, guards scan a QR pass at the gate, and the sports office runs everything from an admin dashboard.</p>
           <ul class="flagship__feats">
-            <li><b>Zero double bookings:</b> slot uniqueness enforced by PostgreSQL constraints, not application code</li>
-            <li><b>Role-based access</b> for students, guards and admins through Supabase Row-Level Security, with Google OAuth/OTP restricted to the college domain</li>
-            <li><b>Full booking lifecycle:</b> guard-verified QR check-in, automatic waitlist promotion and no-show tracking</li>
-            <li><b>Admin tooling:</b> maintenance block-outs, incident reports and usage analytics; constraints and RLS tested with Vitest on in-memory PGlite</li>
+            <li><b>Concurrency-safe transactions:</b> partial unique indexes, per-slot advisory locks and idempotency keys keep bookings consistent on unreliable mobile networks</li>
+            <li><b>Security and RBAC:</b> Row-Level Security on all 16 tables, <code>SECURITY DEFINER</code> functions, college-only Google OAuth/OTP, ES256 JWT verification, Zod validation, rate limiting and a strict CSP</li>
+            <li><b>Automated operations:</b> QR check-in, waitlist offers, no-show release and weekly turf scheduling run as idempotent <code>pg_cron</code> jobs, with health monitoring</li>
+            <li><b>Tested and deployed:</b> 239 automated tests (Vitest + PGlite) that probe RLS as every role; TypeScript monorepo on Vercel and Render</li>
           </ul>
-          <div class="stack"><span>Next.js</span><span>TypeScript</span><span>Hono</span><span>Supabase · Postgres RLS</span><span>Tailwind</span><span>Vitest</span><span>PGlite</span></div>
+          <div class="stack"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Hono</span><span>PostgreSQL</span><span>Supabase</span><span>pg_cron</span><span>Zod</span><span>Tailwind CSS</span><span>Vitest</span></div>
           <div class="flagship__cta">
             <a class="btn btn--solid" href="https://github.com/shahabhilash/vit-bhopal-sports-facilities" target="_blank" rel="noopener">View code ↗</a>
           </div>
@@ -249,7 +250,7 @@
           <div class="ticket__slots">
             <span class="s booked"></span><span class="s"></span><span class="s booked"></span><span class="s mine"></span><span class="s"></span><span class="s booked"></span><span class="s"></span><span class="s"></span>
           </div>
-          <p class="ticket__note scribble">zero double bookings, enforced by the DB ✓</p>
+          <p class="ticket__note scribble">QR pass · verified at the gate ✓</p>
         </div>
       </article>
 
@@ -262,16 +263,15 @@
             <span class="badge">Maps</span>
           </div>
           <h3 class="flagship__title">MeriYatra <span>Live Transit Tracking</span></h3>
-          <p class="flagship__desc">
-            Real-time transit tracking that connects daily commuters with <b>autos, cabs and private buses</b>.
-          </p>
+          <p class="flagship__problem"><span>Problem</span>In smaller Indian cities, buses, shared autos and cabs run without timetables. Commuters wait at stops with no idea when their ride will come, and map apps can't show it.</p>
+          <p class="flagship__desc"><span>Solution</span>A no-install web app that turns any driver's phone into a live GPS beacon, so anyone can watch the vehicle approach and see when it will arrive.</p>
           <ul class="flagship__feats">
-            <li><b>Live positions</b> streamed over WebSockets (Supabase Realtime) in <b>under 100 ms</b></li>
-            <li><b>Accurate ETAs:</b> an OSRM routing engine recalculates arrival time on every GPS update</li>
-            <li><b>Driver and passenger dashboards</b> with ride scheduling, route search, authentication and an English/Hindi interface</li>
-            <li><b>Shipped</b> on Vercel and as a Chrome extension</li>
+            <li><b>Live tracking</b> by number plate or from a distance-sorted list of nearby vehicles, streamed over Supabase Realtime in <b>under 100 ms</b></li>
+            <li><b>Arrival estimates</b> from OSRM road routing, refreshed on every GPS update, plus shareable live-tracking links for family</li>
+            <li><b>Driver mode:</b> one-tap trips, scheduled rides and route search, so passengers can plan ahead</li>
+            <li><b>Built for reach:</b> full Hindi/English UI, mobile-first, works on low-end Android browsers; also shipped as a Chrome extension</li>
           </ul>
-          <div class="stack"><span>React.js</span><span>Vite</span><span>Tailwind CSS</span><span>Supabase Realtime</span><span>PostgreSQL</span><span>React-Leaflet</span><span>OSRM</span></div>
+          <div class="stack"><span>React</span><span>Vite</span><span>Tailwind CSS</span><span>Supabase Realtime</span><span>PostgreSQL</span><span>React-Leaflet</span><span>OSRM</span><span>Nominatim</span></div>
           <div class="flagship__cta">
             <a class="btn btn--solid" href="https://meri-yatra.vercel.app" target="_blank" rel="noopener">Open live site ↗</a>
             <a class="btn btn--outline" href="https://github.com/shahabhilash/MeriYatra" target="_blank" rel="noopener">View code ↗</a>
@@ -363,32 +363,6 @@
       <p class="skills__core reveal scribble"><span>core: DSA · problem solving · API design · code review · agile</span></p>
     </section>
 
-    <!-- ============ ROLES ============ -->
-    <section class="roles">
-      <p class="eyebrow reveal">what I bring</p>
-      <h2 class="section-title reveal">Three hats, one engineer.</h2>
-      <div class="roles__grid">
-        <article class="role reveal">
-          <span class="role__num">01</span>
-          <h3>SDE</h3>
-          <p>Strong DSA foundations and clean, tested code. I design REST and WebSocket APIs, model relational data with constraints that hold up under load, and test them with Vitest on in-memory Postgres.</p>
-          <ul><li>TypeScript · Node · Next.js</li><li>PostgreSQL · RLS · constraints</li><li>Code review &amp; Agile</li></ul>
-        </article>
-        <article class="role reveal">
-          <span class="role__num">02</span>
-          <h3>FDE</h3>
-          <p>I like sitting next to the people who use the software. I shipped a booking system for students, security guards and admins, turning messy campus workflows like QR check-ins, waitlists and no-shows into working product.</p>
-          <ul><li>Stakeholder-driven builds</li><li>Fast iterate &rarr; deploy (Vercel CI/CD)</li><li>Admin tooling &amp; analytics</li></ul>
-        </article>
-        <article class="role reveal">
-          <span class="role__num">03</span>
-          <h3>AI / ML</h3>
-          <p>I built CartSense, an explainable hybrid recommender (XGBoost LambdaMART over ALS, kNN and TF-IDF) trained on 814K real reviews, plus a real-time sign-language recogniser with MediaPipe and Keras LSTMs. I'm Oracle Cloud AI Foundations certified.</p>
-          <ul><li>Recommender systems · XGBoost · PyTorch</li><li>TensorFlow / Keras · LSTMs · OpenCV</li><li>MLflow · offline evaluation · LLM APIs</li></ul>
-        </article>
-      </div>
-    </section>
-
     <!-- ============ JOURNEY ============ -->
     <section class="journey" id="journey">
       <p class="eyebrow reveal">journey</p>
@@ -448,6 +422,32 @@
             <span class="cert__stamp" aria-hidden="true">verified</span>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ============ ROLES ============ -->
+    <section class="roles">
+      <p class="eyebrow reveal">what I bring</p>
+      <h2 class="section-title reveal">Three hats, one engineer.</h2>
+      <div class="roles__grid">
+        <article class="role reveal">
+          <span class="role__num">01</span>
+          <h3>SDE</h3>
+          <p>Strong DSA foundations and clean, tested code. I design REST and WebSocket APIs, model relational data with constraints that hold up under load, and test them with Vitest on in-memory Postgres.</p>
+          <ul><li>TypeScript · Node · Next.js</li><li>PostgreSQL · RLS · constraints</li><li>Code review &amp; Agile</li></ul>
+        </article>
+        <article class="role reveal">
+          <span class="role__num">02</span>
+          <h3>FDE</h3>
+          <p>I like sitting next to the people who use the software. I shipped a booking system for students, security guards and admins, turning messy campus workflows like QR check-ins, waitlists and no-shows into working product.</p>
+          <ul><li>Stakeholder-driven builds</li><li>Fast iterate &rarr; deploy (Vercel CI/CD)</li><li>Admin tooling &amp; analytics</li></ul>
+        </article>
+        <article class="role reveal">
+          <span class="role__num">03</span>
+          <h3>AI / ML</h3>
+          <p>I built CartSense, an explainable hybrid recommender (XGBoost LambdaMART over ALS, kNN and TF-IDF) trained on 814K real reviews, plus a real-time sign-language recogniser with MediaPipe and Keras LSTMs. I'm Oracle Cloud AI Foundations certified.</p>
+          <ul><li>Recommender systems · XGBoost · PyTorch</li><li>TensorFlow / Keras · LSTMs · OpenCV</li><li>MLflow · offline evaluation · LLM APIs</li></ul>
+        </article>
       </div>
     </section>
 

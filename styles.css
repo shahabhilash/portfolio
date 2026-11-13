@@ -177,8 +177,9 @@ body.is-ready .note { opacity: 1; transform: translate(var(--px, 0), var(--py, 0
 .note--r1 { right: 0%;  top: 5%;  --r: 4deg; }
 .note--r2 { right: 13%; top: 24%; --r: -4deg; }
 .note--r3 { right: 0%;  top: 34%; --r: 2deg; }
-.note--r4 { right: 14%; top: 64%; --r: -3deg; }
-.note--r5 { right: 2%;  top: 79%; --r: 5deg; }
+.note--r6 { right: 3%;  top: 52%; --r: -2deg; }
+.note--r4 { right: 14%; top: 66%; --r: -3deg; }
+.note--r5 { right: 2%;  top: 80%; --r: 5deg; }
 
 .doodle { fill: none; stroke: var(--teal); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
 .doodle path { stroke-dasharray: 400; stroke-dashoffset: 400; transition: stroke-dashoffset 1.4s .5s var(--ease); }
@@ -240,7 +241,7 @@ body.is-ready .hero__img img { opacity: 1; transform: none; }
   }
   .hero__scroll { display: none; }
 
-  .hero__stage { display: block; position: relative; flex: 0 0 auto; padding-top: 56px; }
+  .hero__stage { display: block; position: relative; flex: 0 0 auto; padding-top: 84px; }
   .hero__img { width: min(72%, 400px); margin: 0 auto; }
   .hero__img img { max-height: none; min-height: 0; }
 
@@ -355,7 +356,7 @@ section { position: relative; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ============ ROLES ============ */
-.roles { padding: 0 var(--gutter) clamp(80px, 10vw, 130px); max-width: 1280px; margin: 0 auto; }
+.roles { padding: clamp(80px, 10vw, 130px) var(--gutter); max-width: 1280px; margin: 0 auto; }
 .roles__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .role {
   background: #fbfbf3; border: 2px solid var(--ink); border-radius: 22px; padding: 28px;
@@ -391,6 +392,14 @@ section { position: relative; }
 .flagship__title span { display: block; font-family: var(--f-hand); font-weight: 700; color: var(--sea); font-size: .85em; letter-spacing: 0; }
 .flagship--alt .flagship__title span { color: var(--teal); }
 .flagship__desc { line-height: 1.65; margin: 0 0 16px; opacity: .88; }
+.flagship__problem { line-height: 1.6; margin: 0 0 10px; font-size: 15px; opacity: .8; }
+.flagship__problem span, .flagship__desc span {
+  display: inline-block; margin-right: 8px; padding: 2px 8px; border-radius: 6px; vertical-align: 1px;
+  font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+}
+.flagship__problem span { border: 1px solid currentColor; opacity: .85; }
+.flagship__desc span { background: var(--sea); color: var(--deep); }
+.flagship--alt .flagship__desc span { background: var(--teal); color: var(--paper); }
 .flagship__feats { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; font-size: 15px; line-height: 1.5; }
 .flagship__feats li { padding-left: 22px; position: relative; opacity: .9; }
 .flagship__feats li::before { content: "–"; position: absolute; left: 0; color: var(--sea); }

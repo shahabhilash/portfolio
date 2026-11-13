@@ -4,9 +4,9 @@ Personal portfolio of **Abhilash Shah**, a B.Tech CSE student at VIT Bhopal Univ
 
 ## Featured work
 
-- **CartSense:** an explainable recommendation engine trained on 814K reviews. XGBoost LambdaMART re-ranks ALS, kNN and TF-IDF candidates (+39% NDCG@10), served with FastAPI.
-- **VIT Bhopal Sports Facilities:** a production booking system used by 1,000+ students, built on Next.js and Supabase with Postgres RLS.
-- **MeriYatra:** real-time transit tracking with sub-100 ms WebSocket updates and OSRM-based ETAs.
+- **CartSense:** an explainable recommendation engine for small online stores, trained on 814K reviews. XGBoost LambdaMART re-ranks ALS, kNN and TF-IDF candidates (+39% NDCG@10), with built-in A/B testing and a FastAPI.
+- **VIT Bhopal Sports Facilities:** a production booking and access-control platform for 1,000+ students: concurrency-safe Postgres, RLS, QR check-in and 239 tests.
+- **MeriYatra:** real-time tracking for timetable-less local transport, with sub-100 ms updates, OSRM ETAs and a Hindi/English UI.
 
 ## Tech
 
