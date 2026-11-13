@@ -216,6 +216,16 @@
     }, { passive: true });
   }
 
+  /* ---------- phones: "Key features" toggle on the featured projects ---------- */
+  $$(".flagship__more").forEach((b) => {
+    b.addEventListener("click", () => {
+      const card = b.closest(".flagship");
+      const open = card.classList.toggle("is-open");
+      b.setAttribute("aria-expanded", open);
+      b.firstChild.textContent = open ? "Hide features " : "Key features ";
+    });
+  });
+
   /* ---------- certificate cards tilt toward the mouse ---------- */
   if (!reduce && matchMedia("(pointer: fine)").matches) {
     $$(".cert").forEach((card) => {
