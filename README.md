@@ -12,11 +12,9 @@ Personal portfolio of **Abhilash Shah**, a B.Tech CSE student at VIT Bhopal Univ
 
 A static site built with HTML, CSS and vanilla JavaScript. No framework and no build step.
 
-## Run locally
+## Live site
 
-```bash
-python -m http.server 5173
-```
+**[portfolio-hazel-six-19.vercel.app](https://portfolio-hazel-six-19.vercel.app/)**, deployed on Vercel.
 
 ## Contact
 
