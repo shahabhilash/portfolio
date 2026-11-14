@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abhilash Shah — Software Engineer</title>
-  <meta name="description" content="Abhilash Shah — full-stack software engineer (SDE / FDE) with an AI/ML edge. B.Tech CSE @ VIT Bhopal. Builder of the CartSense ML recommendation engine, the VIT Bhopal Sports Facilities booking system (1,000+ users), MeriYatra live transit tracking and more." />
+  <meta name="description" content="Abhilash Shah — full-stack software engineer with an AI/ML edge. B.Tech CSE @ VIT Bhopal. Builder of the CartSense ML recommendation engine, the VIT Bhopal Sports Facilities booking system (1,000+ users), MeriYatra live transit tracking and more." />
   <meta name="theme-color" content="#0a3a2f" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230e7c61'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia' font-size='38' fill='%23f3f1e6'>a</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@500;700&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="styles.css?v=32" />
 </head>
 <body class="is-loading">
 
@@ -74,10 +74,6 @@
 
         <!-- right notes -->
         <div class="notes notes--r">
-        <div class="note note--r1 note--oval" data-depth="16">
-          <span>SDE · FDE · AI/ML</span>
-          <svg class="doodle doodle--oval" viewBox="0 0 260 80" preserveAspectRatio="none"><path d="M20 45 C 10 10, 240 0, 248 35 C 255 70, 30 78, 12 50 C 5 35, 60 18, 120 14"/></svg>
-        </div>
         <div class="note note--r2" data-depth="12">
           <span>Bhopal, MP 📍</span>
         </div>
@@ -118,8 +114,8 @@
         <p class="about__lead reveal">
           I'm <b>Abhilash Shah</b>, a Computer Science undergrad at <b>VIT Bhopal University</b> (B.Tech, 2028) and a full-stack engineer who likes
           owning a problem end to end, from the Postgres schema and RLS policies to the WebSocket layer to the UI people tap on.
-          I'm looking for <b>Software Engineer (SDE)</b> and <b>Forward Deployed Engineer (FDE)</b> roles, and I'm working deeper into
-          <b>AI/ML</b> with sequence models, computer vision and LLM-powered products.
+          I'm looking for <b>software engineering roles</b> where I can build and ship products that solve real problems, and I'm going deeper into
+          <b>AI/ML</b>: recommender systems, computer vision and LLM-powered tools.
         </p>
 
         <ul class="stats reveal">
@@ -158,8 +154,8 @@
     <div class="marquee-clip">
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>Software Engineer</span><i>•</i><span>Forward Deployed Engineer</span><i>•</i><span>AI / ML</span><i>•</i><span>Full-Stack</span><i>•</i><span>Open Source</span><i>•</i>
-        <span>Software Engineer</span><i>•</i><span>Forward Deployed Engineer</span><i>•</i><span>AI / ML</span><i>•</i><span>Full-Stack</span><i>•</i><span>Open Source</span><i>•</i>
+        <span>Software Engineer</span><i>•</i><span>Machine Learning</span><i>•</i><span>AI / ML</span><i>•</i><span>Full-Stack</span><i>•</i><span>Open Source</span><i>•</i>
+        <span>Software Engineer</span><i>•</i><span>Machine Learning</span><i>•</i><span>AI / ML</span><i>•</i><span>Full-Stack</span><i>•</i><span>Open Source</span><i>•</i>
       </div>
     </div>
     </div>
@@ -179,7 +175,8 @@
           </div>
           <h3 class="flagship__title">CartSense <span>Explainable Recommendations</span></h3>
           <p class="flagship__problem"><span>Problem</span>Small online stores show the same bestsellers to everyone. Most visitors never sign in, black-box suggestions aren't trusted, and there's no easy way to prove recommendations help.</p>
-          <p class="flagship__desc"><span>Solution</span>An explainable recommendation engine with a working storefront on top, trained on <b>814K real Amazon reviews</b>.</p>
+          <p class="flagship__desc"><span>Solution</span>An end-to-end, explainable recommendation system: an ML pipeline trained on <b>814K real Amazon reviews</b>, a versioned API that any store can call, and a working storefront that proves its impact with live A/B tests.</p>
+          <div class="impact"><div><b data-count="814" data-prefix="" data-suffix="K">0</b><span>real reviews modelled</span></div><div><b data-count="39" data-prefix="+" data-suffix="%">0</b><span>NDCG@10 vs best baseline</span></div><div><b data-count="24" data-prefix="" data-suffix="">0</b><span>ranking features engineered</span></div></div>
           <button class="flagship__more" type="button" aria-expanded="false">Key features <span aria-hidden="true">+</span></button>
           <ul class="flagship__feats">
             <li><b>Two-stage hybrid:</b> ALS, item-kNN and TF-IDF candidates re-ranked by XGBoost LambdaMART (24 features), <b>+39% NDCG@10</b> over the best single model</li>
@@ -228,7 +225,8 @@
           </div>
           <h3 class="flagship__title">VIT Bhopal <span>Sports Facilities</span></h3>
           <p class="flagship__problem"><span>Problem</span>1,000+ students share a few pickleball, tennis and turf courts, with no fair way to book slots, verify players at the gate or reclaim no-shows.</p>
-          <p class="flagship__desc"><span>Solution</span>A production booking and access-control platform. Students book with their college account, guards scan a QR pass at the gate, and the sports office runs everything from an admin dashboard.</p>
+          <p class="flagship__desc"><span>Solution</span>A production booking and access-control platform live on campus. Students book with their college account, guards verify a QR pass at the gate, and the sports office manages courts, policies and analytics from one dashboard, with every rule enforced in the database.</p>
+          <div class="impact"><div><b data-count="1000" data-prefix="" data-suffix="+">0</b><span>students on the platform</span></div><div><b data-count="239" data-prefix="" data-suffix="">0</b><span>automated tests</span></div><div><b data-count="16" data-prefix="" data-suffix="">0</b><span>tables under Row-Level Security</span></div></div>
           <button class="flagship__more" type="button" aria-expanded="false">Key features <span aria-hidden="true">+</span></button>
           <ul class="flagship__feats">
             <li><b>Concurrency-safe transactions:</b> partial unique indexes, per-slot advisory locks and idempotency keys keep bookings consistent on unreliable mobile networks</li>
@@ -266,7 +264,8 @@
           </div>
           <h3 class="flagship__title">MeriYatra <span>Live Transit Tracking</span></h3>
           <p class="flagship__problem"><span>Problem</span>In smaller Indian cities, buses, shared autos and cabs run without timetables. Commuters wait at stops with no idea when their ride will come, and map apps can't show it.</p>
-          <p class="flagship__desc"><span>Solution</span>A no-install web app that turns any driver's phone into a live GPS beacon, so anyone can watch the vehicle approach and see when it will arrive.</p>
+          <p class="flagship__desc"><span>Solution</span>A no-install, bilingual web platform that turns any driver's phone into a live GPS beacon, so commuters and families can watch a vehicle approach in real time and know exactly when it will arrive.</p>
+          <div class="impact"><div><b data-count="100" data-prefix="&lt;" data-suffix=" ms">0</b><span>live location latency</span></div><div><b data-count="2" data-prefix="" data-suffix=" s">0</b><span>GPS refresh interval</span></div><div><b data-count="2" data-prefix="" data-suffix="">0</b><span>languages, English &amp; Hindi</span></div></div>
           <button class="flagship__more" type="button" aria-expanded="false">Key features <span aria-hidden="true">+</span></button>
           <ul class="flagship__feats">
             <li><b>Live tracking</b> by number plate or from a distance-sorted list of nearby vehicles, streamed over Supabase Realtime in <b>under 100 ms</b></li>
@@ -311,43 +310,55 @@
 
       <h3 class="projects__more reveal">More things I've built</h3>
 
-      <!-- GRID -->
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card__top"><span class="card__tag">Sports Tech · Auction</span></div>
-          <h3>HPL Auction</h3>
-          <p>Live auction and tournament console for 7 inter-house teams: bidding, sold/unsold tracking, budgets and squads in one place.</p>
-          <div class="stack"><span>Next.js 14</span><span>TypeScript</span><span>Supabase</span><span>Tailwind</span></div>
-          <a class="card__link" href="https://github.com/shahabhilash/hpl-auction" target="_blank" rel="noopener">github ↗</a>
-        </article>
-        <article class="card reveal">
+      <!-- DECK: one project at a time, the rest stacked behind -->
+      <div class="more-wrap reveal">
+        <div class="more-side">
+          <p class="deck-count"><b id="deckNow">01</b> / 05</p>
+          <p class="deck-hint">swipe, drag or use the arrows</p>
+          <div class="deck-ctrl">
+            <button type="button" class="deck-btn" data-dir="-1" aria-label="Previous project">←</button>
+            <button type="button" class="deck-btn" data-dir="1" aria-label="Next project">→</button>
+          </div>
+          <div class="deck-dots"><button type="button" aria-label="Show Meetly"></button><button type="button" aria-label="Show Gesture Vision"></button><button type="button" aria-label="Show DevScope"></button><button type="button" aria-label="Show TaskFlow"></button><button type="button" aria-label="Show HPL Auction"></button></div>
+          <div class="deck-timer" aria-hidden="true"><i></i></div>
+        </div>
+        <div class="cards deck" tabindex="0" role="region" aria-roledescription="carousel" aria-label="More projects">
+        <article class="card">
           <div class="card__top"><span class="card__tag">WebRTC</span></div>
           <h3>Meetly</h3>
           <p>Multi-user video rooms over peer-to-peer WebRTC, with a Socket.IO signalling server and an Express/MongoDB REST API.</p>
           <div class="stack"><span>React</span><span>Node</span><span>Socket.IO</span><span>WebRTC</span><span>MongoDB</span></div>
           <a class="card__link" href="https://github.com/shahabhilash/meetly" target="_blank" rel="noopener">github ↗</a>
         </article>
-        <article class="card reveal">
+        <article class="card">
           <div class="card__top"><span class="card__tag">AI / ML · CV</span></div>
           <h3>Gesture Vision</h3>
           <p>Real-time sign-language recognition: MediaPipe extracts 126 hand landmarks per frame and a Keras LSTM classifies 30-frame sequences.</p>
           <div class="stack"><span>Python</span><span>TensorFlow/Keras</span><span>MediaPipe</span><span>OpenCV</span></div>
           <a class="card__link" href="https://github.com/shahabhilash/gesture-vision" target="_blank" rel="noopener">github ↗</a>
         </article>
-        <article class="card reveal">
+        <article class="card">
           <div class="card__top"><span class="card__tag">AI · Analytics</span></div>
           <h3>DevScope</h3>
           <p>GitHub analytics dashboard that charts repository and language trends and uses Gemini to generate a developer skill assessment.</p>
           <div class="stack"><span>Next.js 14</span><span>Gemini</span><span>Recharts</span><span>Framer Motion</span></div>
           <a class="card__link" href="https://github.com/shahabhilash/DevScope" target="_blank" rel="noopener">github ↗</a>
         </article>
-        <article class="card reveal">
+        <article class="card">
           <div class="card__top"><span class="card__tag">SaaS · Kanban</span></div>
           <h3>TaskFlow</h3>
           <p>Kanban project manager with workspaces and drag-and-drop boards, built on an MVC Express API, JWT auth and a relational Postgres schema.</p>
           <div class="stack"><span>React</span><span>Zustand</span><span>Express</span><span>PostgreSQL</span></div>
           <a class="card__link" href="https://github.com/shahabhilash/TaskFlow" target="_blank" rel="noopener">github ↗</a>
         </article>
+        <article class="card">
+          <div class="card__top"><span class="card__tag">Sports Tech · Auction</span></div>
+          <h3>HPL Auction</h3>
+          <p>Live auction and tournament console for 7 inter-house teams: bidding, sold/unsold tracking, budgets and squads in one place.</p>
+          <div class="stack"><span>Next.js 14</span><span>TypeScript</span><span>Supabase</span><span>Tailwind</span></div>
+          <a class="card__link" href="https://github.com/shahabhilash/hpl-auction" target="_blank" rel="noopener">github ↗</a>
+        </article>
+        </div>
       </div>
     </section>
 
@@ -435,13 +446,13 @@
       <div class="roles__grid">
         <article class="role reveal">
           <span class="role__num">01</span>
-          <h3>SDE</h3>
+          <h3>Engineering</h3>
           <p>Strong DSA foundations and clean, tested code. I design REST and WebSocket APIs, model relational data with constraints that hold up under load, and test them with Vitest on in-memory Postgres.</p>
           <ul><li>TypeScript · Node · Next.js</li><li>PostgreSQL · RLS · constraints</li><li>Code review &amp; Agile</li></ul>
         </article>
         <article class="role reveal">
           <span class="role__num">02</span>
-          <h3>FDE</h3>
+          <h3>Product</h3>
           <p>I like sitting next to the people who use the software. I shipped a booking system for students, security guards and admins, turning messy campus workflows like QR check-ins, waitlists and no-shows into working product.</p>
           <ul><li>Stakeholder-driven builds</li><li>Fast iterate &rarr; deploy (Vercel CI/CD)</li><li>Admin tooling &amp; analytics</li></ul>
         </article>
@@ -472,6 +483,6 @@
     </section>
   </main>
 
-  <script src="main.js?v=14"></script>
+  <script src="main.js?v=16"></script>
 </body>
 </html>

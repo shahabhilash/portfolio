@@ -226,6 +226,100 @@
     });
   });
 
+  /* ---------- "More things I've built": stacked card deck ---------- */
+  const deck = $(".deck");
+  if (deck) {
+    const cards = $$(".card", deck);
+    const n = cards.length;
+    const nowEl = $("#deckNow");
+    const dots = $$(".deck-dots button");
+    const timer = $(".deck-timer i");
+    const wrap = deck.closest(".more-wrap");
+    let order = cards.map((_, i) => i);
+    let busy = false;
+    const FLING = 520;
+
+    const apply = () => {
+      order.forEach((ci, pos) => {
+        const c = cards[ci];
+        c.dataset.pos = Math.min(pos, 3);
+        if (pos === 0) c.removeAttribute("inert"); else c.setAttribute("inert", "");
+      });
+      const front = order[0];
+      if (nowEl) nowEl.textContent = String(front + 1).padStart(2, "0");
+      dots.forEach((d, i) => { d.classList.toggle("is-on", i === front); d.setAttribute("aria-current", i === front); });
+      restartTimer();
+    };
+    const restartTimer = () => {
+      if (!timer) return;
+      timer.style.animation = "none";
+      void timer.offsetWidth; // restart the CSS animation
+      timer.style.animation = "";
+    };
+
+    const next = () => {
+      if (busy) return; busy = true;
+      const top = cards[order[0]];
+      top.classList.add("fling-out");
+      setTimeout(() => {
+        top.classList.remove("fling-out");
+        order.push(order.shift());
+        apply();
+        busy = false;
+      }, FLING);
+    };
+    const prev = () => {
+      if (busy) return; busy = true;
+      order.unshift(order.pop());
+      const top = cards[order[0]];
+      top.classList.add("fling-in");
+      apply();
+      setTimeout(() => { top.classList.remove("fling-in"); busy = false; }, FLING);
+    };
+    const goTo = (i) => {
+      if (busy || i === order[0]) return;
+      while (order[0] !== i) order.push(order.shift());
+      const top = cards[i];
+      top.classList.add("fling-in");
+      busy = true;
+      apply();
+      setTimeout(() => { top.classList.remove("fling-in"); busy = false; }, FLING);
+    };
+
+    $$(".deck-btn").forEach((b) => b.addEventListener("click", () => (b.dataset.dir === "1" ? next() : prev())));
+    dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+    deck.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+    });
+
+    // swipe / drag the front card
+    let sx = null, swiped = false;
+    deck.addEventListener("pointerdown", (e) => { sx = e.clientX; swiped = false; });
+    deck.addEventListener("pointerup", (e) => {
+      if (sx === null) return;
+      const dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 45) { swiped = true; dx < 0 ? next() : prev(); }
+    });
+    // a swipe should not also open the project
+    deck.addEventListener("click", (e) => { if (swiped) { e.stopPropagation(); e.preventDefault(); swiped = false; } }, true);
+
+    // autoplay: the progress line drives the timing; it pauses on hover/focus and off-screen
+    if (!reduce && timer) {
+      timer.addEventListener("animationend", next);
+      const pause = (on) => wrap.classList.toggle("is-paused", on);
+      wrap.addEventListener("mouseenter", () => pause(true));
+      wrap.addEventListener("mouseleave", () => pause(false));
+      wrap.addEventListener("focusin", () => pause(true));
+      wrap.addEventListener("focusout", () => pause(false));
+      new IntersectionObserver(([en]) => wrap.classList.toggle("is-offscreen", !en.isIntersecting), { threshold: 0.3 }).observe(deck);
+    } else if (timer) {
+      timer.parentElement.hidden = true;
+    }
+
+    apply();
+  }
+
   /* ---------- certificate cards tilt toward the mouse ---------- */
   if (!reduce && matchMedia("(pointer: fine)").matches) {
     $$(".cert").forEach((card) => {

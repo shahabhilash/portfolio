@@ -571,6 +571,43 @@ section { position: relative; }
 }
 @keyframes featsIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
+
+/* ---- impact stats on featured projects ---- */
+.impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 16px; }
+.impact div {
+  padding: 10px 12px; border-radius: 12px; border: 1px solid currentColor; border-color: rgba(110, 231, 192, .3);
+  opacity: 0; translate: 0 10px; transition: opacity .5s ease, translate .6s var(--ease);
+}
+.flagship--alt .impact div { border-color: rgba(14, 124, 97, .3); }
+.is-in .impact div { opacity: 1; translate: none; }
+.is-in .impact div:nth-child(2) { transition-delay: .12s; }
+.is-in .impact div:nth-child(3) { transition-delay: .24s; }
+.impact b { display: block; font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; line-height: 1; color: var(--sea); letter-spacing: -0.02em; }
+.flagship--alt .impact b { color: var(--teal); }
+.impact span { display: block; margin-top: 4px; font-size: 12px; line-height: 1.3; opacity: .75; }
+@media (max-width: 640px) {
+  .impact { gap: 6px; margin: 4px 0 12px; }
+  .impact div { padding: 8px; }
+  .impact b { font-size: 20px; }
+  .impact span { font-size: 10.5px; }
+}
+
+/* ---- extra motion ---- */
+/* section titles: a marker underline sweeps in under the heading */
+.section-title { position: relative; }
+.section-title::after {
+  content: ""; display: block; width: 96px; height: 6px; margin-top: 14px; border-radius: 3px;
+  background: var(--sea); transform: scaleX(0); transform-origin: left; transition: transform .9s var(--ease) .35s;
+}
+.section-title.is-in::after { transform: scaleX(1); }
+/* project mocks float gently once on screen */
+.is-in .ticket, .is-in .recs, .is-in .transit { animation: float 6s ease-in-out 1s infinite; }
+@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+/* timeline dots pop in, then pulse once */
+.timeline li::before { transform: scale(0); transition: transform .5s cubic-bezier(.3, 1.8, .5, 1) .2s; }
+.timeline li.is-in::before { transform: scale(1); animation: dotPulse 1.2s ease .7s 1; }
+@keyframes dotPulse { 0% { box-shadow: 0 0 0 0 rgba(23, 165, 127, .5); } 100% { box-shadow: 0 0 0 12px rgba(23, 165, 127, 0); } }
+
 /* cards */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px; }
 .card {
@@ -601,6 +638,64 @@ section { position: relative; }
 .card--more .card__link { color: var(--deep); }
 @media (max-width: 1000px) { .cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+
+
+/* ============ "More things I've built": stacked, sliding card deck ============ */
+.more-wrap { display: grid; grid-template-columns: 230px 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+.more-side { display: flex; flex-direction: column; gap: 14px; }
+.deck-count { margin: 0; font-family: var(--f-mono); font-size: 14px; color: var(--muted); }
+.deck-count b { font-family: var(--f-display); font-size: 56px; font-weight: 800; color: var(--teal); letter-spacing: -0.04em; margin-right: 4px; }
+.deck-hint { margin: -6px 0 0; font-family: var(--f-hand); font-size: 20px; color: var(--muted); }
+.deck-ctrl { display: flex; gap: 10px; }
+.deck-btn {
+  width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--ink); background: #fbfbf3; color: var(--ink);
+  font-size: 20px; cursor: pointer; box-shadow: 3px 3px 0 var(--teal);
+  transition: transform .2s var(--ease), box-shadow .2s, background .2s, color .2s;
+}
+.deck-btn:hover { background: var(--teal); color: var(--paper); transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+.deck-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink); }
+.deck-dots { display: flex; gap: 8px; }
+.deck-dots button { width: 10px; height: 10px; padding: 0; border-radius: 999px; border: 1.5px solid var(--teal); background: transparent; cursor: pointer; transition: width .35s var(--ease), background .3s; }
+.deck-dots button.is-on { width: 28px; background: var(--teal); }
+.deck-timer { height: 3px; width: 100%; max-width: 180px; border-radius: 2px; background: rgba(14, 124, 97, .15); overflow: hidden; }
+.deck-timer i { display: block; height: 100%; width: 100%; background: var(--teal); transform-origin: left; animation: deckTimer 3s linear forwards; }
+.more-wrap.is-paused .deck-timer i, .more-wrap.is-offscreen .deck-timer i { animation-play-state: paused; }
+@keyframes deckTimer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.cards.deck {
+  display: grid; grid-template-columns: 1fr; gap: 0; margin: 0;
+  width: 100%; max-width: 560px; justify-self: center; padding: 0 0 56px; outline: none; touch-action: pan-y;
+}
+.deck .card {
+  grid-area: 1 / 1; min-height: 260px; transform-origin: 50% 100%;
+  transition: transform .6s var(--ease), opacity .45s ease, box-shadow .3s;
+  user-select: none;
+}
+.deck .card[data-pos="0"] { z-index: 4; transform: none; opacity: 1; box-shadow: 8px 8px 0 var(--teal); }
+.deck .card[data-pos="1"] { z-index: 3; transform: translateY(20px) scale(.95) rotate(2.5deg); opacity: 1; }
+.deck .card[data-pos="2"] { z-index: 2; transform: translateY(38px) scale(.9) rotate(-2.5deg); opacity: .9; }
+.deck .card[data-pos="3"] { z-index: 1; transform: translateY(52px) scale(.86); opacity: 0; }
+.deck .card:not([data-pos="0"]) { pointer-events: none; }
+.deck .card:not([data-pos="0"]) > * { opacity: .35; transition: opacity .4s; }
+.deck .card[data-pos="0"] > * { opacity: 1; transition: opacity .4s .15s; }
+.deck .card[data-pos="0"]:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: 10px 12px 0 var(--teal); }
+/* the front card flings off to the left ... */
+.deck .card.fling-out { z-index: 5; animation: flingOut .52s cubic-bezier(.55, 0, .8, .2) forwards; }
+@keyframes flingOut { to { transform: translate(-120%, -24px) rotate(-18deg); opacity: 0; } }
+/* ... or swings back in from the left when going back */
+.deck .card.fling-in { z-index: 5; animation: flingIn .52s cubic-bezier(.2, .8, .25, 1) both; }
+@keyframes flingIn { from { transform: translate(-120%, -24px) rotate(-18deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.deck:focus-visible .card[data-pos="0"] { outline: 3px solid var(--teal-2); outline-offset: 4px; }
+
+@media (max-width: 760px) {
+  .more-wrap { grid-template-columns: 1fr; gap: 8px; }
+  .more-side { order: 2; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .deck-count b { font-size: 34px; }
+  .deck-hint { display: none; }
+  .deck-timer { order: 5; max-width: none; flex-basis: 100%; }
+  .deck .card { min-height: 240px; }
+  .cards.deck { padding-bottom: 50px; }
+}
 
 /* ============ SKILLS ============ */
 .skills { padding: 0 var(--gutter) clamp(80px, 10vw, 130px); max-width: 1280px; margin: 0 auto; }

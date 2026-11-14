@@ -1,6 +1,6 @@
 # Abhilash Shah — Portfolio
 
-Personal portfolio of **Abhilash Shah**, a B.Tech CSE student at VIT Bhopal University (2028) and full-stack engineer targeting **SDE**, **FDE** and **AI/ML** roles.
+Personal portfolio of **Abhilash Shah**, a B.Tech CSE student at VIT Bhopal University (2028) and full-stack engineer focused on software engineering and **AI/ML**.
 
 ## Featured work
 
